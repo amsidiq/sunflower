@@ -1,11 +1,11 @@
 name: sunflower
 version: 1.0.0
-description: My fuckin' awesome application
+description: Cyber Sunflower Website
 container:
-  image: nginx
+  image: ghcr.io/amsidiq/sunflower
   port: 80
 resources:
-  cpu: 500m
-  memory: 512Mi
+  cpu: 100m
+  memory: 128Mi
   replicas: 1
 domain: sunflower.deployaja.id
