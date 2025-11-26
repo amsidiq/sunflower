@@ -9,7 +9,7 @@ on:
 env:
   REGISTRY: ghcr.io/amsidiq/sunflower
   GH_REGISTRY: ghcr.io
-  IMAGE_NAME: nginx:alpine
+  IMAGE_NAME: nginx
   DOCKER_BUILDKIT: 1
 
 jobs:
