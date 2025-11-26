@@ -22,9 +22,6 @@ FROM nginx
 # Install curl untuk health check
 RUN apk add --no-cache curl
 
-# Copy custom nginx configuration
-COPY nginx.conf /etc/nginx/nginx.conf
-
 # Copy built files dari builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
 
