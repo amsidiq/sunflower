@@ -1,19 +1,7 @@
-# Multi-stage build tanpa curl
-FROM node:18-alpine AS builder
-
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN mkdir -p dist && \
-    cp index.html dist/ && \
-    [ -f style.css ] && cp style.css dist/ || true && \
-    [ -f script.js ] && cp script.js dist/ || true
-
+# Single stage - langsung copy ke nginx
 FROM nginx:alpine
-
-# Copy files tanpa health check (tanpa curl)
-COPY --from=builder /app/dist /usr/share/nginx/html
-
+COPY index.html /usr/share/nginx/html/
+COPY style.css /usr/share/nginx/html/ 2>/dev/null || true
+COPY script.js /usr/share/nginx/html/ 2>/dev/null || true
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
